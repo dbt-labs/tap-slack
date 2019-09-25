@@ -1,0 +1,160 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string"
+        },
+        "name": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "is_channel": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "created": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "is_archived": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "is_general": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "unlinked": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "creator": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "name_normalized": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "is_shared": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "is_org_shared": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "is_member": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "is_private": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "is_mpim": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "members": {
+            "type": [
+                "null",
+                "array"
+            ],
+            "items": {
+                "type": "string"
+            }
+        },
+        "topic": {
+            "type": [
+                "null",
+                "object"
+            ],
+            "properties": {
+                "creator": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "last_set": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "value": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                }
+            }
+        },
+        "purpose": {
+            "type": [
+                "null",
+                "object"
+            ],
+            "properties": {
+                "creator": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "last_set": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "value": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                }
+            }
+        },
+        "previous_names": {
+            "type": [
+                "null",
+                "array"
+            ],
+            "items": {}
+        },
+        "num_members": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        }
+    }
+}

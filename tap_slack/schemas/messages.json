@@ -1,0 +1,277 @@
+{
+    "type": "object",
+    "properties": {
+        "ts": {
+            "type": "string"
+        },
+        "channel_id": {
+            "type": "string"
+        },
+        "user": {
+            "type": "string"
+        },
+        "type": {
+            "type": "string"
+        },
+        "subtype": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "bot_id": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "username": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "pinned_info": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "pinned_to": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "text": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "message": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "client_msg_id": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "team": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "thread_ts": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "latest_reply": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "subscribed": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "edited": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "upload": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "last_read": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "display_as_bot": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "hidden": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "files": {
+            "type": [
+                "null",
+                "array"
+            ],
+            "items": {}
+        },
+        "root": {
+            "type": [
+                "null",
+                "object"
+            ],
+            "properties": {
+                "client_msg_id": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "latest_reply": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "replies": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "reply_count": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "reply_users_count": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "reply_users": {
+                    "type": [
+                        "null",
+                        "array"
+                    ],
+                    "items": {}
+                },
+                "last_read": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "subscribed": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "team": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "text": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "thread_ts": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "ts": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "type": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "user": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                }
+            }
+        },
+        "inviter": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "topic": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "purpose": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "reply_count": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        },
+        "reply_users_count": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        },
+        "attachments": {
+            "type": [
+                "null",
+                "array"
+            ],
+            "items": {}
+        },
+        "reply_users": {
+            "type": [
+                "null",
+                "array"
+            ],
+            "items": {}
+        },
+        "replies": {
+            "type": [
+                "null",
+                "array"
+            ],
+            "items": {}
+        },
+        "reactions": {
+            "type": [
+                "null",
+                "array"
+            ],
+            "items": {}
+        }
+    }
+}

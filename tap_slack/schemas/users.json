@@ -1,0 +1,298 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string"
+        },
+        "team_id": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "name": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "deleted": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "color": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "real_name": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "two_factor_type": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "is_invited_user": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "tz": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "tz_label": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "tz_offset": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "profile": {
+            "type": [
+                "null",
+                "object"
+            ],
+            "properties": {
+                "avatar_hash": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "always_active": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "api_app_id": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "bot_id": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "display_name": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "display_name_normalized": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "image_192": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "image_32": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "image_48": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "image_512": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "image_72": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "image_24": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "image_1024": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "image_original": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "is_custom_image": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "phone": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "real_name": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "first_name": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "last_name": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "real_name_normalized": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "skype": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "status_emoji": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "status_expiration": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "status_text": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "status_text_canonical": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "team": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "title": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "fields": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                }
+            }
+        },
+        "is_admin": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "is_owner": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "is_primary_owner": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "is_restricted": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "is_ultra_restricted": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "is_bot": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "is_app_user": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "has_2fa": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "updated": {
+            "type": [
+                "null",
+                "string"
+            ]
+        }
+    }
+}

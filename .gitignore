@@ -1,0 +1,14 @@
+*.json
+!*/schemas/*.json
+*.sublime-*
+.python-version
+singer-check-tap-data
+*.pyc
+*.egg-info
+dist/
+get_catalog.py
+gen_schemas.sh
+env/
+run.sh
+debug/
+stitch/
