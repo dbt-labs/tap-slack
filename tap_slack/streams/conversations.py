@@ -50,12 +50,43 @@ class ConversationsStream(BaseStream):
 
         return self.sync_for_interval(channel['id'], oldest, latest)
 
+    def fetch_replies(self, channel_id, root_msg_ts, cursor=''):
+        replies = []
+        params = {
+            "channel": channel_id,
+            "ts": root_msg_ts,
+            "cursor": cursor
+        }
+
+        while True:
+            response = self.client.make_request('conversations_replies', params)
+            replies.extend(response['messages'])
+
+            meta = response.get('response_metadata', {})
+            next_cursor = meta.get('next_cursor', '')
+
+            if len(next_cursor) > 0:
+                params['cursor'] = next_cursor
+            else:
+                break
+
+        return replies
+
     def sync_for_interval(self, channel_id, oldest, latest):
         table = self.TABLE
         params = self.get_params(channel_id, oldest, latest)
 
         while True:
             response = self.client.make_request(self.API_METHOD, params)
+
+            messages = response[self.response_key()]
+            for message in messages:
+                reply_count = message.get('reply_count', 0)
+                if message.get('reply_count', 0) > 0 and 'ts' in message:
+                    message['threaded_replies'] = self.fetch_replies(channel_id, message['ts'])
+                else:
+                    message['threaded_replies'] = []
+
             transformed = self.get_stream_data(response, channel_id)
 
             with singer.metrics.record_counter(endpoint=table) as counter:

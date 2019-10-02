@@ -260,11 +260,35 @@
             "items": {}
         },
         "replies": {
-            "type": [
-                "null",
-                "array"
+            "type": ["null", "array"
             ],
             "items": {}
+        },
+        "threaded_replies": {
+            "type": ["null", "array"],
+            "items": {
+                "type": "object",
+                "properties": {
+                    "latest_reply": {"type": ["null", "string"]},
+                    "replies": {"type": ["null", "string"]},
+                    "reply_count": {"type": ["null", "integer"]},
+                    "reply_users_count": {"type": ["null", "integer"]},
+                    "subscribed": {"type": ["null", "string"]},
+                    "root": {"type": ["null", "string"]},
+                    "team": {"type": ["null", "string"]},
+                    "subtype": {"type": ["null", "string"]},
+
+                    "client_msg_id": {"type": ["null", "string"]},
+                    "reactions": {"type": ["null", "array"], "items": {}},
+                    "type": {"type": ["null", "string"]},
+                    "user": {"type": ["null", "string"]},
+                    "edited": {"type": ["null", "boolean"]},
+                    "text": {"type": ["null", "string"]},
+                    "thread_ts": {"type": ["null", "string"]},
+                    "parent_user_id": {"type": ["null", "string"]},
+                    "ts": {"type": ["null", "string"]}
+                }
+            }
         },
         "reactions": {
             "type": [
