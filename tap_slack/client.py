@@ -1,5 +1,5 @@
 import time
-import slack
+import slack_sdk
 import singer
 import singer.metrics
 
@@ -10,14 +10,15 @@ class SlackClient:
 
     def __init__(self, config):
         self.config = config
-        self.client = slack.WebClient(
+        self.client = slack_sdk.WebClient(
             token=self.config['token'],
             headers={"User-Agent": self.config.get('user_agent')}
         )
 
-    def make_request(self, method_name, params):
-        time.sleep(2)
-        LOGGER.info("Making request to {} ({})".format(method_name, params))
+    def make_request(self, method_name, params, timeout):
+        LOGGER.info(" - Sleeping for {} seconds".format(timeout))
+        time.sleep(timeout)
+        LOGGER.info(" - Making request to {} ({})".format(method_name, params))
 
         method = getattr(self.client, method_name)
         response = method(**params)

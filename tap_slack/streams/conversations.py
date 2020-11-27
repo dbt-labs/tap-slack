@@ -13,13 +13,14 @@ class ConversationsStream(BaseStream):
     API_METHOD = 'conversations_history'
     TABLE = 'messages'
     KEY_PROPERTIES = ['ts']
+    TIMEOUT = 2
 
     def response_key(self):
         return 'messages'
 
     def get_params(self, channel_id, oldest, latest):
         return {
-            "limit": 100,
+            "limit": 200,
             "channel": channel_id,
             "oldest": oldest,
             "latest": latest,
@@ -41,25 +42,20 @@ class ConversationsStream(BaseStream):
         return self.state
 
     def sync_channel(self, channel):
-        latest_date = datetime.date.today()
-        one_month = datetime.timedelta(days=30)
-        oldest_date = latest_date - one_month
+        return self.sync_for_interval(channel['id'])
 
-        oldest = int(time.mktime(oldest_date.timetuple()))
-        latest = int(time.mktime(latest_date.timetuple()))
-
-        return self.sync_for_interval(channel['id'], oldest, latest)
-
-    def fetch_replies(self, channel_id, root_msg_ts, cursor=''):
+    def fetch_replies(self, channel_id, root_msg_ts, i, total):
         replies = []
         params = {
             "channel": channel_id,
             "ts": root_msg_ts,
-            "cursor": cursor
+            "cursor": '',
+            "limit": 200
         }
 
         while True:
-            response = self.client.make_request('conversations_replies', params)
+            response = self.client.make_request('conversations_replies', params, self.TIMEOUT)
+            LOGGER.info(f"  - Found {len(response['messages'])} replies for thread {i+1} of {total}")
             replies.extend(response['messages'])
 
             meta = response.get('response_metadata', {})
@@ -72,18 +68,21 @@ class ConversationsStream(BaseStream):
 
         return replies
 
-    def sync_for_interval(self, channel_id, oldest, latest):
+    def sync_for_interval(self, channel_id):
         table = self.TABLE
+
+        oldest, latest = self.get_lookback()
         params = self.get_params(channel_id, oldest, latest)
 
         while True:
-            response = self.client.make_request(self.API_METHOD, params)
+            response = self.client.make_request(self.API_METHOD, params, self.TIMEOUT)
 
             messages = response[self.response_key()]
-            for message in messages:
+            total = len(messages)
+            for i, message in enumerate(messages):
                 reply_count = message.get('reply_count', 0)
                 if message.get('reply_count', 0) > 0 and 'ts' in message:
-                    message['threaded_replies'] = self.fetch_replies(channel_id, message['ts'])
+                    message['threaded_replies'] = self.fetch_replies(channel_id, message['ts'], i, total)
                 else:
                     message['threaded_replies'] = []
 
@@ -96,8 +95,10 @@ class ConversationsStream(BaseStream):
             meta = response.get('response_metadata', {})
             next_cursor = meta.get('next_cursor', '')
 
-            if len(next_cursor) > 0:
+            if len(next_cursor) > 0 and len(messages) > 0:
+                last_message_ts = messages[-1]['ts']
                 params['cursor'] = next_cursor
+                self.log_progress(oldest, float(last_message_ts))
             else:
                 break
 

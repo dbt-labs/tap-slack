@@ -76,6 +76,12 @@
                         "string"
                     ]
                 },
+                "email": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
                 "always_active": {
                     "type": [
                         "null",

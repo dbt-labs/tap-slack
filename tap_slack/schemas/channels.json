@@ -10,6 +10,39 @@
                 "string"
             ]
         },
+        "is_ext_shared": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "is_group": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "is_im": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "is_pending_ext_shared": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "parent_conversation": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "pending_connected_team_ids": {},
+        "pending_shared": {},
+        "shared_team_ids": {},
         "is_channel": {
             "type": [
                 "null",

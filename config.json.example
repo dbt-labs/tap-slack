@@ -1,4 +1,9 @@
 {
     "token": "abc123token",
-    "user_agent": "tap-slack <your-email@domain.com>"
+    "user_agent": "tap-slack <your-email@domain.com>",
+    "lookback": {
+        "access_logs": 30,
+        "messages": 30
+    },
+    "anonymize_ips": true
 }
