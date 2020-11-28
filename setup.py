@@ -11,7 +11,7 @@ setup(name='tap-slack',
       py_modules=['tap_slack'],
       install_requires=[
           'tap-framework==0.0.4',
-          'slack_sdk',
+          'slack_sdk==3.0.0'
       ],
       entry_points='''
           [console_scripts]
