@@ -18,7 +18,7 @@ echo "$CATALOG" > catalog.json
 aws s3 cp "$TAP_STATE_S3_FILE_PATH" state.json || echo "{}" > state.json
 
 ### Run the tap
-{ ./tap/bintap-slack -s state.json -c config.json --catalog catalog.json | ./stitch/bin/target-stitch -c persist.json > state.log; }
+{ ./tap/bin/tap-slack -s state.json -c config.json --catalog catalog.json | ./stitch/bin/target-stitch -c persist.json > state.log; }
 
 tail -n1 state.log > new-state.json
 
