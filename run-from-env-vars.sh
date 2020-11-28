@@ -5,6 +5,11 @@ source stitch/bin/activate
 pip install target-stitch
 deactivate
 
+python3 -m venv tap
+source tap/bin/activate
+pip install -e .
+deactivate
+
 ### Load configuration
 echo "$STITCH_CONFIG" > persist.json
 echo "$TAP_CONFIG" > config.json
@@ -13,7 +18,7 @@ echo "$CATALOG" > catalog.json
 aws s3 cp "$TAP_STATE_S3_FILE_PATH" state.json || echo "{}" > state.json
 
 ### Run the tap
-{ tap-slack -s state.json -c config.json --catalog catalog.json | ./stitch/bin/target-stitch -c persist.json > state.log; }
+{ ./tap/bintap-slack -s state.json -c config.json --catalog catalog.json | ./stitch/bin/target-stitch -c persist.json > state.log; }
 
 tail -n1 state.log > new-state.json
 
