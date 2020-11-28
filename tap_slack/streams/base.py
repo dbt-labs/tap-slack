@@ -7,6 +7,9 @@ from tap_slack.state import incorporate, save_state
 from tap_framework.streams import BaseStream as base
 from tap_slack.cache import stream_cache
 
+import datetime
+import time
+
 
 LOGGER = singer.get_logger()
 
@@ -14,6 +17,32 @@ LOGGER = singer.get_logger()
 class BaseStream(base):
     KEY_PROPERTIES = ['id']
     CACHE = False
+    TIMEOUT = 2
+    DEFAULT_LOOKBACK = 30
+
+    def get_lookback(self):
+        lookback = self.config.get('lookback', {}).get(self.TABLE, self.DEFAULT_LOOKBACK)
+        LOGGER.info(f"Lookback window is set to {lookback} days for stream {self.TABLE}")
+        latest_date = datetime.date.today()
+        time_delta = datetime.timedelta(days=lookback)
+        oldest_date = latest_date - time_delta
+
+        oldest = int(time.mktime(oldest_date.timetuple()))
+        latest = int(time.mktime(latest_date.timetuple()))
+
+        return oldest, latest
+
+    def log_progress(self, oldest, latest):
+        end_date = datetime.datetime.fromtimestamp(oldest)
+        end_date_s = end_date.strftime('%Y-%m-%d')
+        cur_date = datetime.datetime.fromtimestamp(latest)
+        cur_date_s = cur_date.strftime('%Y-%m-%d')
+        delta = (cur_date - end_date).days
+
+
+        LOGGER.info(
+            f"From={cur_date_s} until={end_date_s}. {delta} days remaining to sync"
+        )
 
     def get_params(self):
         return {}
@@ -22,7 +51,7 @@ class BaseStream(base):
         table = self.TABLE
 
         while True:
-            response = self.client.make_request(self.API_METHOD, params)
+            response = self.client.make_request(self.API_METHOD, params, self.TIMEOUT)
             transformed = self.get_stream_data(response)
 
             with singer.metrics.record_counter(endpoint=table) as counter:

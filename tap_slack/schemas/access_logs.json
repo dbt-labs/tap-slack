@@ -1,0 +1,62 @@
+{
+    "type": "object",
+    "properties": {
+        "user_id": {
+            "type": "string"
+        },
+        "username": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "date_first": {
+            "type": [
+                "null",
+                "number"
+            ]
+        },
+        "date_last": {
+            "type": [
+                "null",
+                "number"
+            ]
+        },
+        "count": {
+            "type": [
+                "null",
+                "number"
+            ]
+        },
+        "ip": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "user_agent": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "isp": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "country": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "region": {
+            "type": [
+                "null",
+                "string"
+            ]
+        }
+    }
+}
