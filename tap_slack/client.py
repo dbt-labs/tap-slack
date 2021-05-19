@@ -15,7 +15,7 @@ class SlackClient:
             headers={"User-Agent": self.config.get('user_agent')}
         )
 
-    def make_request(self, method_name, params, timeout):
+    def make_request(self, method_name, params, timeout, attempt=1):
         LOGGER.info(" - Sleeping for {} seconds".format(timeout))
         time.sleep(timeout)
         LOGGER.info(" - Making request to {} ({})".format(method_name, params))
@@ -23,7 +23,13 @@ class SlackClient:
         method = getattr(self.client, method_name)
         response = method(**params)
 
-        if response.status_code != 200:
+        if attempt > 5:
+            raise RuntimeError("Too many 429s, exiting!")
+        elif response.status_code == 429:
+            LOGGER.info("429 error, retrying after delay")
+            time.sleep(timeout * 10)
+            return self.make_request(method_name, params, timeout, attempt + 1)
+        elif response.status_code != 200:
             LOGGER.info(response.data)
             raise RuntimeError(response)
 
