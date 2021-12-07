@@ -50,7 +50,7 @@ class ConversationsStream(BaseStream):
             "channel": channel_id,
             "ts": root_msg_ts,
             "cursor": '',
-            "limit": 200
+            "limit": 1000
         }
 
         while True:
