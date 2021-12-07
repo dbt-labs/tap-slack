@@ -20,7 +20,7 @@ class ConversationsStream(BaseStream):
 
     def get_params(self, channel_id, oldest, latest):
         return {
-            "limit": 200,
+            "limit": 1000,
             "channel": channel_id,
             "oldest": oldest,
             "latest": latest,
