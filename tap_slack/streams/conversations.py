@@ -13,7 +13,7 @@ class ConversationsStream(BaseStream):
     API_METHOD = 'conversations_history'
     TABLE = 'messages'
     KEY_PROPERTIES = ['ts']
-    TIMEOUT = 2
+    TIMEOUT = 1
 
     def response_key(self):
         return 'messages'
