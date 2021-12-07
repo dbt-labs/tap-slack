@@ -13,14 +13,14 @@ class ConversationsStream(BaseStream):
     API_METHOD = 'conversations_history'
     TABLE = 'messages'
     KEY_PROPERTIES = ['ts']
-    TIMEOUT = 2
+    TIMEOUT = 1
 
     def response_key(self):
         return 'messages'
 
     def get_params(self, channel_id, oldest, latest):
         return {
-            "limit": 200,
+            "limit": 1000,
             "channel": channel_id,
             "oldest": oldest,
             "latest": latest,
@@ -50,7 +50,7 @@ class ConversationsStream(BaseStream):
             "channel": channel_id,
             "ts": root_msg_ts,
             "cursor": '',
-            "limit": 200
+            "limit": 1000
         }
 
         while True:
