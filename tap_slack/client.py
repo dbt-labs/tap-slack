@@ -2,9 +2,13 @@ import time
 import slack_sdk
 import singer
 import singer.metrics
+import ssl
 
 LOGGER = singer.get_logger()
 
+ssl_context = ssl.create_default_context()
+ssl_context.check_hostname = False
+ssl_context.verify_mode = ssl.CERT_NONE
 
 class SlackClient:
 
@@ -12,7 +16,8 @@ class SlackClient:
         self.config = config
         self.client = slack_sdk.WebClient(
             token=self.config['token'],
-            headers={"User-Agent": self.config.get('user_agent')}
+            headers={"User-Agent": self.config.get('user_agent')},
+            ssl = ssl_context
         )
 
     def make_request(self, method_name, params, timeout, attempt=1):
