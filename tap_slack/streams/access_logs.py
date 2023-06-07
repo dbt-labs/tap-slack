@@ -10,7 +10,7 @@ class AccessLogsStream(BaseStream):
     API_METHOD = 'team_accessLogs'
     TABLE = 'access_logs'
     KEY_PROPERTIES = ['user_id', 'ip', 'user_agent']
-    TIMEOUT = 3
+    TIMEOUT = 2
 
     def response_key(self):
         return 'logins'
