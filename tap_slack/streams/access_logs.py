@@ -18,6 +18,8 @@ class AccessLogsStream(BaseStream):
     def get_params(self):
         return {
             "count": 100,
+            "page": 1,
+            "before": "now"
         }
 
     def transform_record(self, record):
@@ -35,11 +37,7 @@ class AccessLogsStream(BaseStream):
     def sync_paginated(self, params):
         table = self.TABLE
 
-        params = {
-            "count": 1000,
-            "page": 1,
-            "before": "now",
-        }
+        params = self.get_params()
 
         oldest, latest = self.get_lookback()
         stop_at_timestamp = oldest
